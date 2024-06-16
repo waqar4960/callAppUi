@@ -1,0 +1,7 @@
+{
+  "name": "callAppUi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
