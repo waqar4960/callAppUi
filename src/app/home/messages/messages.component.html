@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="iconSection">
+    <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+    <ion-title>Messages</ion-title>
+    <ion-chip outline="true" slot="end">
+      <ion-label>Default</ion-label>
+    </ion-chip>
+  </ion-toolbar>
+  <ion-toolbar class="searchSection">
+    <ion-searchbar slot="start"></ion-searchbar>
+    <ion-icon name="options-outline" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="contentWrapper">
+    <div>
+      <ion-segment value="Messages" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="Messages">
+          <ion-label>Messages</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Calls">
+          <ion-label>Calls</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <div class="chat-list" *ngIf="activeTab == 'Messages'">
+      <div class="chats">
+        <ion-item lines="none" routerLink="/conversation-page">
+          <ion-avatar slot="start">
+            <img src="https://i.pravatar.cc/300" />
+          </ion-avatar>
+          <ion-label class="ion-text-nowrap">
+            <h2>Item Name</h2>
+            <p>Typing....</p>
+          </ion-label>
+          <div class="info-div">
+            <ion-badge>5</ion-badge>
+            <p>02:13</p>
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>
