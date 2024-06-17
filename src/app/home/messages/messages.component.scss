@@ -42,10 +42,12 @@ ion-header {
 
 ion-content {
   --background: #da030b;
+  --overflow: hidden;
   .contentWrapper {
     background: #fff;
     padding: 20px;
     border-radius: 30px 30px 0px 0px;
+    height: 100dvh;
   }
   ion-segment {
     --background: #feeaeb;
@@ -61,13 +63,15 @@ ion-content {
       --border-radius: 10px;
     }
   }
+  .chat-list {
+    margin-top: 20px;
+  }
   .chats {
-    margin-top: 15px;
     ion-item::part(native) {
       padding: 0px;
     }
     ion-item {
-      margin-bottom: 15px;
+      // margin-bottom: 5px;
       ion-avatar {
         width: 100% !important;
         height: 100% !important;
@@ -88,8 +92,18 @@ ion-content {
       .info-div {
         position: absolute;
         right: 0;
+        top: 0;
         font-size: 0.8rem;
         font-weight: bolder;
+        ion-badge {
+          border-radius: 20px;
+          background: #da030b;
+          margin-left: 15px;
+        }
+        ion-icon {
+          font-size: 18px;
+          margin-left: 15px;
+        }
       }
     }
   }
