@@ -1,1 +1,43 @@
-<h1>Always</h1>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Clara Hazel</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="call-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="videocam-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="messages">
+    <div class="message time">8:24 PM</div>
+    <div class="message received">Hi Nadia, Clara here! 👋</div>
+    <div class="message sent">Hey Clara, Nice to meet you! 😊</div>
+    <div class="message time">9:00 PM</div>
+    <div class="message received">
+      You too! Seems we have same things in common here
+    </div>
+    <div class="message sent">So what song are you currently listening to?</div>
+    <div class="message received">
+      Been listening to John Mayer's new song, Last Train Home
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-input placeholder="Type your message..."></ion-input>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

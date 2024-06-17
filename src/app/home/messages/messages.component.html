@@ -1,99 +1,82 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar class="iconSection">
-    <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+  <ion-toolbar>
+    <ion-button shape="round" slot="start" fill="clear" color="light">
+      <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
+    </ion-button>
     <ion-title>Messages</ion-title>
-    <ion-chip outline="true" slot="end">
-      <ion-label>Default</ion-label>
-    </ion-chip>
+    <ion-buttons slot="end">
+      <ion-chip>
+        <ion-avatar>
+          <img src="../../../assets/icon/coins.svg" />
+        </ion-avatar>
+        <ion-label>30m</ion-label>
+      </ion-chip>
+    </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar class="searchSection">
-    <ion-searchbar slot="start"></ion-searchbar>
-    <ion-icon name="options-outline" slot="end"></ion-icon>
-  </ion-toolbar>
+  <div class="search-bar">
+    <ion-searchbar placeholder="Search"></ion-searchbar>
+    <ion-button fill="clear" shape="round">
+      <ion-avatar slot="icon-only">
+        <img src="../../../assets/icon/Icon2.svg" />
+      </ion-avatar>
+    </ion-button>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="contentWrapper">
-    <div>
-      <ion-segment value="Messages" (ionChange)="segmentChanged($event)">
-        <ion-segment-button value="Messages">
-          <ion-label>Messages</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Calls">
-          <ion-label>Calls</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-    <div class="chat-list" *ngIf="activeTab == 'Messages'">
-      <div class="chats">
-        <ion-item lines="none" routerLink="/conversation-page">
-          <ion-avatar slot="start">
-            <img src="https://i.pravatar.cc/300" />
-          </ion-avatar>
-          <ion-label class="ion-text-nowrap">
-            <h2>Item Name</h2>
-            <p>Typing....</p>
-          </ion-label>
-          <div class="info-div">
-            <p>02:13am</p>
-            <ion-badge>5</ion-badge>
-          </div>
-        </ion-item>
-        <ion-item lines="none" routerLink="/conversation-page">
-          <ion-avatar slot="start">
-            <img src="https://i.pravatar.cc/310" />
-          </ion-avatar>
-          <ion-label class="ion-text-nowrap">
-            <h2>Item Name</h2>
-            <p>Hi! How are you.</p>
-          </ion-label>
-          <div class="info-div">
-            <p>04:15pm</p>
-          </div>
-        </ion-item>
-        <ion-item lines="none" routerLink="/conversation-page">
-          <ion-avatar slot="start">
-            <img src="https://i.pravatar.cc/320" />
-          </ion-avatar>
-          <ion-label class="ion-text-nowrap">
-            <h2>Item Name</h2>
-            <p>Recording audio......</p>
-          </ion-label>
-          <div class="info-div">
-            <!-- <ion-badge>5</ion-badge> -->
-            <p>06:18pm</p>
-            <ion-icon name="checkmark-outline"></ion-icon>
-          </div>
-        </ion-item>
-        <ion-item lines="none" routerLink="/conversation-page">
-          <ion-avatar slot="start">
-            <img src="https://i.pravatar.cc/340" />
-          </ion-avatar>
-          <ion-label class="ion-text-nowrap">
-            <h2>Item Name</h2>
-            <p>I did it Right.</p>
-          </ion-label>
-          <div class="info-div">
-            <!-- <ion-badge>5</ion-badge> -->
-            <p>05:15pm</p>
-            <ion-icon name="checkmark-done-outline"></ion-icon>
-          </div>
-        </ion-item>
-        <ion-item lines="none" routerLink="/conversation-page">
-          <ion-avatar slot="start">
-            <img src="https://i.pravatar.cc/330" />
-          </ion-avatar>
-          <ion-label class="ion-text-nowrap">
-            <h2>Item Name</h2>
-            <p>I did it Right.</p>
-          </ion-label>
-          <div class="info-div">
-            <!-- <ion-badge>5</ion-badge> -->
-            <p>02:13pm</p>
-            <ion-icon name="checkmark-done-outline" color="primary"></ion-icon>
-          </div>
-        </ion-item>
-      </div>
-    </div>
+  <div class="customSegment">
+    <ion-segment [(ngModel)]="selectedSegment">
+      <ion-segment-button value="messages">
+        <ion-label>Messages</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="calls">
+        <ion-label>Calls</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="selectedSegment">
+    <ion-list *ngSwitchCase="'messages'">
+      <ion-item *ngFor="let chat of messages">
+        <ion-avatar slot="start">
+          <img [src]="chat.avatar" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ chat.name }}</h2>
+          <p>{{ chat.message }}</p>
+        </ion-label>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+          "
+        >
+          <ion-badge
+            style="background-color: white"
+            color="danger"
+            *ngIf="chat.unread"
+            slot="end"
+            ><div
+              style="
+                height: 12px;
+                width: 12px;
+                border-radius: 50px;
+                background-color: #e0030c;
+              "
+            ></div
+          ></ion-badge>
+          <ion-note slot="end" color="primary">{{ chat.time }}</ion-note>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'calls'"> </ion-list>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
