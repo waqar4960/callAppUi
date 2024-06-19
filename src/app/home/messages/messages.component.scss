@@ -1,12 +1,13 @@
 ion-header {
   ion-toolbar {
     padding-left: 24px;
-    padding-right: 17px;
+    // padding-right: 12px;
     --background: #e0030c;
     --color: #ffffff;
     text-align: center;
   }
   ion-button {
+    border: 1px solid rgba($color: #ffffff, $alpha: 0.1);
     border-radius: 50px;
   }
   ion-title {
@@ -19,10 +20,17 @@ ion-header {
   ion-chip {
     --background: #ffffff;
     --color: #e0030c;
-    padding: 0 20px 0 20px;
+    padding: 0 15px 0 15px;
+    width: 70px;
+    height: 40px;
+    gap: 5px;
+    border-radius: 27px;
+    opacity: 0px;
+
     ion-avatar {
       height: 13.5px;
       width: 13.5px;
+      margin: 0px;
     }
     ion-label {
       font-size: 12px;
@@ -32,18 +40,18 @@ ion-header {
     display: flex;
     align-items: center;
     background: #e0030c;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     ion-searchbar {
       --border: 1px solid red($color: #000000);
-      --border-radius: 50px;
+      --border-radius: 16px;
       --placeholder-color: #4b164c;
       --placeholder-font-style: urbanist;
       --placeholder-font-weight: 400;
       margin-left: 16px;
     }
     ion-button {
-      margin-right: 24px;
-      border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+      margin-right: 14px;
+      border: 1.5px solid rgba($color: #ffffff, $alpha: 0.25);
       border-radius: 50px;
       ion-avatar {
         height: 24px;
@@ -52,31 +60,76 @@ ion-header {
     }
   }
 }
-
 ion-content {
   height: 100dvh !important;
-  --background: #e0030c;
+  --background: #ffffff;
   .customSegment {
-    background-color: #ffffff;
     padding: 20px;
-    border-radius: 30px 30px 0 0;
+    background: #ffffff;
+    border-radius: 32px 32px 0 0;
     ion-segment {
       --background: #fab9b94d !important;
-      padding: 10px;
+      padding: 5px;
       display: flex;
-      border-radius: 20px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.1);
+      border-radius: 14px;
       ion-segment-button {
         flex-grow: 6;
-        --transition: ease-in 5sec;
+        --transition: 0.5s ease-in;
         --color-checked: #ffffff;
-        --background-checked: #e0030c;
+        --background-checked: linear-gradient(180deg, #e0030c 0%, #9b0207 100%);
         --indicator-color: transparent !important;
         --color: #e0030c;
-        --border-radius: 20px;
+        --border-radius: 11px;
         --font-family: Urbanist;
         --font-size: 16px;
         --font-weight: 800;
       }
+    }
+  }
+  .segmentContent {
+    ion-list {
+      // padding-left: 24px !important;
+      ion-item {
+        ion-avatar {
+          img {
+            height: 56px;
+            width: 56px;
+          }
+        }
+        ion-label {
+          h2 {
+            font-family: Urbanist;
+            font-size: 18px !important;
+            font-weight: 600;
+            color: #22172a;
+          }
+          p {
+            font-family: Urbanist;
+            font-size: 14px !important;
+            font-weight: 400;
+            color: #22172a;
+          }
+        }
+      }
+    }
+  }
+}
+ion-footer {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 15px;
+
+  .btns {
+    background: transparent !important;
+    border: none;
+    border-radius: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
+    ion-tab-button {
+      background: #ffffff !important;
+      --color: #a58ba6;
+      --color-selected: var(red);
     }
   }
 }

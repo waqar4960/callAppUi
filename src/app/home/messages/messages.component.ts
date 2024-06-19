@@ -8,6 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class MessagesComponent implements OnInit {
   selectedSegment: string = 'messages';
 
+  calls = [
+    {
+      id: 1,
+      name: 'Alfredo Calzoni',
+      time: '57 mins Ago',
+      type: 'audio',
+      direction: 'outgoing',
+      avatar: 'path/to/avatar1.jpg',
+    },
+    {
+      id: 2,
+      name: 'Clara Hazel',
+      time: '57 mins Ago',
+      type: 'video',
+      direction: 'incoming',
+      avatar: 'path/to/avatar2.jpg',
+    },
+    // more call data
+  ];
+
   messages = [
     {
       name: 'Alfredo Calzoni',
@@ -39,7 +59,7 @@ export class MessagesComponent implements OnInit {
     },
     {
       name: 'Savanna Hall',
-      message: '',
+      message: 'How do you do?',
       time: '10:23',
       avatar: 'assets/avatars/savanna.jpg',
       unread: false,
@@ -48,4 +68,7 @@ export class MessagesComponent implements OnInit {
 
   constructor() {}
   ngOnInit(): void {}
+  // openChat(chat: any) {
+  //   this.router.navigate(['/conversation-page', { chatId: chat.name }]);
+  // }
 }
