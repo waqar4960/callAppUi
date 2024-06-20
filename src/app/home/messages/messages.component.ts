@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit {
+  searchTerm: string = '';
   selectedSegment: string = 'messages';
 
   calls = [
@@ -65,10 +66,26 @@ export class MessagesComponent implements OnInit {
       unread: false,
     },
   ];
+  // for search bar
+  filteredChats = [...this.messages];
+  filteredCalls = [...this.calls];
 
+  segmentChanged(event: any) {
+    this.selectedSegment = event.detail.value;
+    this.filterList();
+  }
+  filterList() {
+    const searchTermLower = this.searchTerm.toLowerCase();
+    if (this.selectedSegment === 'messages') {
+      this.filteredChats = this.messages.filter((chat) =>
+        chat.name.toLowerCase().includes(searchTermLower)
+      );
+    } else if (this.selectedSegment === 'calls') {
+      this.filteredCalls = this.calls.filter((call) =>
+        call.name.toLowerCase().includes(searchTermLower)
+      );
+    }
+  }
   constructor() {}
   ngOnInit(): void {}
-  // openChat(chat: any) {
-  //   this.router.navigate(['/conversation-page', { chatId: chat.name }]);
-  // }
 }

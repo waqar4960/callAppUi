@@ -17,6 +17,8 @@
     <ion-searchbar
       search-icon="search-outline"
       placeholder="Search"
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterList()"
     ></ion-searchbar>
     <ion-button fill="clear" shape="round">
       <ion-avatar slot="icon-only">
@@ -29,7 +31,10 @@
 <ion-content fullscreen="true">
   <div style="background-color: #e0030c">
     <div class="customSegment">
-      <ion-segment [(ngModel)]="selectedSegment">
+      <ion-segment
+        [(ngModel)]="selectedSegment"
+        (ionChange)="segmentChanged($event)"
+      >
         <ion-segment-button value="messages">
           <ion-label>Messages</ion-label>
         </ion-segment-button>
@@ -40,7 +45,7 @@
     </div>
     <div class="segment-content" [ngSwitch]="selectedSegment">
       <ion-list class="ion-padding" lines="none" *ngSwitchCase="'messages'">
-        <ion-item *ngFor="let chat of messages">
+        <ion-item *ngFor="let chat of filteredChats">
           <ion-avatar slot="start">
             <img [src]="chat.avatar" />
           </ion-avatar>
@@ -76,7 +81,7 @@
       </ion-list>
 
       <ion-list class="ion-padding" lines="none" *ngSwitchCase="'calls'">
-        <ion-item *ngFor="let call of calls">
+        <ion-item *ngFor="let call of filteredCalls">
           <ion-avatar slot="start">
             <img [src]="call.avatar" />
           </ion-avatar>
